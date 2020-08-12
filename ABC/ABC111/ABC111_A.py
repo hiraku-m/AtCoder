@@ -3,16 +3,15 @@ from io import StringIO
 import unittest
 
 
-
 def resolve():
-    n = int(input())
-    t, a = map(int, input().split())
-    mt = 50
-    l = map(int, input().split())
-    for i in range(n):
-        res = t - l[i] * 0.006
-        if res < mt:
-            
+    s = list(input())
+    for i in range(len(s)):
+        if s[i] == '9':
+            s[i] = '1'
+        elif s[i] == '1':
+            s[i] = '9'
+    print(''.join(s))
+
 
 class TestClass(unittest.TestCase):
     def assertIO(self, input, output):
@@ -25,17 +24,13 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """2
-12 5
-1000 2000"""
-        output = """1"""
+        input = """119"""
+        output = """991"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """3
-21 -11
-81234 94124 52141"""
-        output = """3"""
+        input = """999"""
+        output = """111"""
         self.assertIO(input, output)
 
 
